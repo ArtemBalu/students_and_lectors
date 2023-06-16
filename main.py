@@ -42,6 +42,30 @@ class Student:
         else:
             b_student = ['Ошибка: один или оба студента не найдены!']
         return " ".join(b_student)
+      
+    def __eq__(self, other):
+        if isinstance (other, Student):
+            return self.__average_mark__() == other.__average_mark__()
+        
+    def __ne__(self, other):
+        if isinstance (other, Student):
+            return self.__average_mark__() != other.__average_mark__()
+        
+    def __gt__(self, other):
+        if isinstance (other, Student):
+            return self.__average_mark__() > other.__average_mark__()
+        
+    def __lt__(self, other):
+        if isinstance (other, Student):
+            return self.__average_mark__() < other.__average_mark__()
+        
+    def __le__(self, other):
+        if isinstance (other, Student):
+            return self.__average_mark__() <= other.__average_mark__()
+        
+    def __ge__(self, other):
+        if isinstance (other, Student):
+            return self.__average_mark__() >= other.__average_mark__()
     
 class Mentor:
     def __init__(self, name, surname):
@@ -78,6 +102,30 @@ class Lecturer(Mentor):
         else:
             b_lecturer = ['Ошибка: один или оба лектора не найдены!']
         return " ".join(b_lecturer)
+    
+    def __eq__(self, other):
+        if isinstance (other, Lecturer):
+            return self.__average_mark__() == other.__average_mark__()
+        
+    def __ne__(self, other):
+        if isinstance (other, Lecturer):
+            return self.__average_mark__() != other.__average_mark__()
+        
+    def __gt__(self, other):
+        if isinstance (other, Lecturer):
+            return self.__average_mark__() > other.__average_mark__()
+        
+    def __lt__(self, other):
+        if isinstance (other, Lecturer):
+            return self.__average_mark__() < other.__average_mark__()
+        
+    def __le__(self, other):
+        if isinstance (other, Lecturer):
+            return self.__average_mark__() <= other.__average_mark__()
+        
+    def __ge__(self, other):
+        if isinstance (other, Lecturer):
+            return self.__average_mark__() >= other.__average_mark__()
 
 class Reviewer(Mentor):
     def rate_hw(self, student, course, grade):
@@ -192,3 +240,21 @@ print(student_average_course_mark (lecturers, 'История'))   # попыт�
 print(lecturer_average_course_mark (lecturers, 'Математика'))   # без ошибок
 print(lecturer_average_course_mark (lecturers, 'Физическая культура'))   # нет такого курса
 print(lecturer_average_course_mark (students, 'Математика'))   # попытаемся узнать оценки студентов
+
+# Ниже в коментариях указаны ответы, которые программа должна вывести в консоль при корректной работе.
+
+print(MBorisova == APetrov)  # F
+print(MBorisova != APetrov)  # T
+print(MBorisova < APetrov)  # F
+print(MBorisova > APetrov)  # T
+print(MBorisova <= APetrov)  # F
+print(MBorisova >= APetrov)  # T
+
+print(GFokin == VKarpov)  # F
+print(GFokin != VKarpov)  # T
+print(GFokin < VKarpov)  # F
+print(GFokin > VKarpov)  # T
+print(GFokin <= VKarpov)  # F
+print(GFokin >= VKarpov)  # T
+
+print(APetrov == VKarpov)  # None, так как сравниваем ученика и лектора
